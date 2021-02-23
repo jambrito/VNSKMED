@@ -1,4 +1,4 @@
-VNSKMED<-function(arquivo,nclust=2,NSI=20,imax=6,vmax=3,MAXITER=10,range_s=10,range_bl=30)
+VNSKMED<-function(arquivo,nclust=2,NSI=20,vmax=3,MAXITER=10,range_s=10,range_bl=30)
 {
 #nclust = k - Number of clusters
 #NSI = Numbber of initial solutions generated
@@ -197,7 +197,7 @@ i<-1
 Fbest<-Inf
 NG<-rowOrder(D)
 NG<-NG[,-1]
-
+imax<-6
 NSI<-rep(NSI,imax)
 s=clusterApplyLB(cl=clust,NSI,function(y) VNS(y,D,vmax,range_s,range_bl,MAXITER,nclust))
 ixmin<-which.min(sapply(s,function(x) x$Fobj))
